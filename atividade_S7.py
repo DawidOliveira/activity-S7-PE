@@ -1,21 +1,25 @@
 try:
     import matplotlib.pyplot as plt
 except ImportError:
-    print('você não tem o matplotlib instalado, por favor execute o seguinte comando:\npip install matplotlib\n\nor\npip3 install matplotlib')
+    print('você não tem o matplotlib instalado, por favor execute o seguinte comando:\npip install matplotlib\n\nor\n\npip3 install matplotlib')
     exit()
 
 try:
     import numpy as np
 except ImportError:
-    print('você não tem o numpy instalado, por favor execute o seguinte comando:\npip install numpy\n\nor\npip3 install numpy')
+    print('você não tem o numpy instalado, por favor execute o seguinte comando:\npip install numpy\n\nor\n\npip3 install numpy')
     exit()
 
 
 def question01():
-    data = open('./data/weight_chart.txt', 'r')
+    directory = './data/weight_chart.txt'   # este é o diretório do dataset para esta questão,
+                                            # caso o seu dataset esteja em outro caminho
+                                            # informar nesta variável
+
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     x = []
     y = []
-    for line in data:
+    for line in data: # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Age':
             x.append(int(line.split('\t')[0]))
             y.append(float(line.split('\t')[1].split('\n')[0]))
@@ -32,10 +36,13 @@ def question01():
     plt.show()
 
 def question02():
-    data = open('./data/feature_count.txt', 'r')
+    directory = './data/feature_count.txt'  # este é o diretório do dataset para esta questão,
+                                            # caso o seu dataset esteja em outro caminho
+                                            # informar nesta variável
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     x = []
     y = []
-    for line in data:
+    for line in data:   # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Feature':
             x.append(line.split('\t')[0])
             y.append(int(line.split('\t')[1].split('\n')[0]))
@@ -57,11 +64,14 @@ def question03():
     plt.show()
 
 def question04():
-    data = open('./data/male_female_counts.txt', 'r')
+    directory = './data/male_female_counts.txt' # este é o diretório do dataset para esta questão,
+                                                # caso o seu dataset esteja em outro caminho
+                                                # informar nesta variável
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     listColors = ['#ff0000','#ffa300','#d2ff00','#3aff00','#00ff71','#00ffff','#0071ff','#3a00ff','#d200ff','#ff00a3']
     x = []
     y = []
-    for line in data:
+    for line in data:   # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Sample':
             x.append(line.split('\t')[0])
             y.append(int(line.split('\t')[1].split('\n')[0]))
@@ -74,10 +84,13 @@ def question04():
 
     plt.show()
 
-def question05():
-    data = open('./data/up_down_expression.txt', 'r')
+def question05(): # esta questão tende a demorar para plotar o gráfico devido a grande quantidade de dados a serem analisados
+    directory = './data/up_down_expression.txt' # este é o diretório do dataset para esta questão,
+                                                # caso o seu dataset esteja em outro caminho
+                                                # informar nesta variável
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     listColors = ['#f00000','#0000f0', '#c5c5c5']
-    for line in data:
+    for line in data:   # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Gene':
             x = float(line.split('\t')[1])
             y = float(line.split('\t')[2])
@@ -100,7 +113,10 @@ def question05():
     plt.show()
 
 def question06():
-    data = open('./data/chromosome_position_data.txt', 'r')
+    directory = './data/chromosome_position_data.txt'   # este é o diretório do dataset para esta questão,
+                                                        # caso o seu dataset esteja em outro caminho
+                                                        # informar nesta variável
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     listColors = ['#e71c1e','#3f89c0', '#57b854']
 
     x = []
@@ -108,7 +124,7 @@ def question06():
     mut2 = []
     WT = []
 
-    for line in data:
+    for line in data:   # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Position':
             aux = int(line.split('\t')[0])
             aux1 = float(line.split('\t')[1])
@@ -134,10 +150,13 @@ def question06():
     plt.show()
 
 def question07():
-    data = open('./data/brain_bodyweight.txt', 'r')
+    directory = './data/brain_bodyweight.txt'   # este é o diretório do dataset para esta questão,
+                                                # caso o seu dataset esteja em outro caminho
+                                                # informar nesta variável
+    data = open(directory, 'r') # recuperando o conteúdo do dataset somente para leitura
     plt.figure(figsize=(10,5))
 
-    for line in data:
+    for line in data:   # lendo cada linha do dataset e fazendo o devido tratamento para a geração do gráfico
         if line.split('\t')[0] != 'Species ' and line.split('\t')[0] != 'Species':
             aux = line.split('\t')[0]
             aux1 = float(line.split('\t')[1])
@@ -145,8 +164,6 @@ def question07():
             aux3 = float(line.split('\t')[3])
             aux4 = float(line.split('\t')[4].split('\n')[0])
             
-            print(aux, aux1, aux2, aux3, aux4)
-
             plt.scatter(aux2,aux1,color = "#000000",marker='.')
             plt.text(aux2 - .1,aux1 - .3,s=aux,fontdict=dict(size=8))
             plt.errorbar(aux2,aux1,xerr=aux4,yerr=aux3,fmt='*',ecolor="#000000", mfc="#000000",mec="#000000", capsize=4)
@@ -158,16 +175,14 @@ def question07():
 
     plt.show()
 
+# Questões a serem executadas. É possível executar uma em específico basta acrescentar o símbolo # 
+# no começo da linha referente as outras questões. 
+# Ex.: quero executar somente a questão 4, então coloco o # nas outras questões ficando assim: # question01()
+# basta repetir o processo para as questões que não forem executadas  
 question01()
-
 question02()
-
 question03()
-
 question04()
-
 question05()
-
 question06()
-
 question07()
