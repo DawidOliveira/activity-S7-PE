@@ -12,7 +12,7 @@ except ImportError:
 
 
 def question01():
-    data = open('./weight_chart.txt', 'r')
+    data = open('./data/weight_chart.txt', 'r')
     x = []
     y = []
     for line in data:
@@ -32,7 +32,7 @@ def question01():
     plt.show()
 
 def question02():
-    data = open('./feature_count.txt', 'r')
+    data = open('./data/feature_count.txt', 'r')
     x = []
     y = []
     for line in data:
@@ -57,7 +57,7 @@ def question03():
     plt.show()
 
 def question04():
-    data = open('./male_female_counts.txt', 'r')
+    data = open('./data/male_female_counts.txt', 'r')
     listColors = ['#ff0000','#ffa300','#d2ff00','#3aff00','#00ff71','#00ffff','#0071ff','#3a00ff','#d200ff','#ff00a3']
     x = []
     y = []
@@ -75,7 +75,7 @@ def question04():
     plt.show()
 
 def question05():
-    data = open('./up_down_expression.txt', 'r')
+    data = open('./data/up_down_expression.txt', 'r')
     listColors = ['#f00000','#0000f0', '#c5c5c5']
     for line in data:
         if line.split('\t')[0] != 'Gene':
@@ -100,7 +100,7 @@ def question05():
     plt.show()
 
 def question06():
-    data = open('./chromosome_position_data.txt', 'r')
+    data = open('./data/chromosome_position_data.txt', 'r')
     listColors = ['#e71c1e','#3f89c0', '#57b854']
 
     x = []
@@ -134,7 +134,7 @@ def question06():
     plt.show()
 
 def question07():
-    data = open('./brain_bodyweight.txt', 'r')
+    data = open('./data/brain_bodyweight.txt', 'r')
     plt.figure(figsize=(10,5))
 
     for line in data:
